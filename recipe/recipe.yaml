@@ -13,6 +13,7 @@ source:
   sha256: d867190a46a7f730923475a68af2e09fc9e796017a59be395a4bf3900d0c3ae4
   patches:
     - use-system-nanobind.patch
+    - fix-pkgconfig-eigen.patch
     - 1467.patch
     - support_windows_shared.patch
 

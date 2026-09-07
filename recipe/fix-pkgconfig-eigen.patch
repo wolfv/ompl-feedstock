@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Maurice <mauricepurnawan@gmail.com>
+Date: Mon, 7 Sep 2026 19:00:00 +0700
+Subject: [PATCH] Use the pkg-config name for Eigen
+
+Eigen3::Eigen is a CMake target, not a pkg-config module.  Refer to the
+eigen3 module in ompl.pc so pkg-config consumers can resolve the dependency.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 95a0313a2..1bb48784f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,7 +111,7 @@ if(NOT SKBUILD)
+         target_link_flags(ompl)
+         set(PKG_NAME "ompl")
+         set(PKG_DESC "The Open Motion Planning Library")
+-        set(PKG_EXTERNAL_DEPS "Eigen3::Eigen ${ompl_PKG_DEPS}")
++        set(PKG_EXTERNAL_DEPS "eigen3 ${ompl_PKG_DEPS}")
+         set(PKG_OMPL_LIBS "-lompl ${ompl_LINK_FLAGS}")
+         configure_file("${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/ompl.pc.in"
+                        "${CMAKE_CURRENT_BINARY_DIR}/ompl.pc" @ONLY)
+-- 
+2.51.0
